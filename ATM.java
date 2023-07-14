@@ -23,7 +23,10 @@ public class ATM {
 
     public void run() {
         // Prompt the user to select an option: Login or Create Account
-        System.out.println("Welcome to the ATM. Please select an option:");
+        System.out.println("*********************************");
+        System.out.println("*        Welcome to the ATM      *");
+        System.out.println("*********************************");
+        System.out.println("Please select an option:");
         System.out.println("1. Login");
         System.out.println("2. Create Account");
         int option = Integer.parseInt(scanner.nextLine());
@@ -45,6 +48,9 @@ public class ATM {
 
     private void login() {
         // Prompt the user for their user ID and PIN.
+        System.out.println("*********************************");
+        System.out.println("*           Login               *");
+        System.out.println("*********************************");
         System.out.println("Enter your user ID: ");
         String userID = scanner.nextLine();
         System.out.println("Enter your PIN: ");
@@ -68,14 +74,17 @@ public class ATM {
     }
 
     private void createAccount() {
-        // Prompt the user to enter their desired user ID and PIN.
+        // Prompt the user to enter user ID and PIN.
+        System.out.println("*********************************");
+        System.out.println("*       Create Account          *");
+        System.out.println("*********************************");
         System.out.println("Enter a user ID: ");
         String userID = scanner.nextLine();
         System.out.println("Enter a PIN: ");
         String pin = scanner.nextLine();
 
         if (bank.isUserIDAvailable(userID)) {
-            // Create a new account holder and add it to the bank
+            // Creation a new account holder and add it to the bank
             accountHolder = new AccountHolder(userID, pin);
             bank.addAccountHolder(accountHolder);
 
@@ -88,6 +97,9 @@ public class ATM {
     }
 
     private void showMainMenu() {
+        System.out.println("*********************************");
+        System.out.println("*       ATM Main Menu           *");
+        System.out.println("*********************************");
         System.out.println("Welcome to the ATM, " + accountHolder.getUserID() + ".");
         int choice;
         do {
@@ -148,7 +160,7 @@ public class ATM {
 
         public Bank() {
             accountHolders = new ArrayList<>();
-            // Add some sample account holders to the bank
+            //  account holders to the bank
             accountHolders.add(new AccountHolder("123", "John Doe"));
             accountHolders.add(new AccountHolder("456", "Jane Smith"));
         }
@@ -197,9 +209,15 @@ public class ATM {
 
         public void showTransactionsHistory() {
             if (transactionHistory.isEmpty()) {
+                System.out.println("*********************************");
+                System.out.println("*     Transaction History       *");
+                System.out.println("*********************************");
                 System.out.println("No transaction history available.");
+                System.out.println();
             } else {
-                System.out.println("Transaction History:");
+                System.out.println("*********************************");
+                System.out.println("*     Transaction History       *");
+                System.out.println("*********************************");
                 for (Transaction transaction : transactionHistory) {
                     double amount = transaction.getAmount();
                     String transactionType = amount < 0 ? "Outgoing" : "Incoming";
